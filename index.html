@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Qui similique libero quis rem ab aut ipsum eaque earum
+        consequatur expedita.
+
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deleniti consectetur facilis officiis id,
+            perspiciatis amet totam nobis aliquid tempora reiciendis autem, dolor quos quod vero atque ducimus, nulla
+            dolorum mollitia?</p>
+
+       <button id="btn1">click me</button>
+       <button id="btn2">click me again</button>
+    </div>
+
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+    integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer">
+</script>
+
+<script>
+    $(document).ready(function () {
+       let x = $(".container").css({"color" : "red"})
+     
+          $(".container").click(function(){
+            $(".container").hide();
+          })  
+
+        //   $(".container").click(function({
+        //     // $("#btn2").show();
+        //   }))
+      })
+</script>
+</html>
