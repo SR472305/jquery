@@ -1,122 +1,184 @@
-// 1. DOM Manipulation Methods
-// ==========================================================================================
+// 5. Animation & Effects Methods
 
-1. .html()  // Get or set the HTML contents of an 
+1. .show()  // Display an element
+// The .show() method is used to display an element that was previously hidden.
 
-// Example: get html content
-let content = $('#myDiv').html();  // Get the HTML content of the div
-console.log(content);
+$('#myDiv').show();  // Make #myDiv visible
 
-// Example: set html content
-$('#myDiv').html('<p>This is a new HTML content.</p>');  // Set HTML content inside the div
+2. .hide()  // Hide an element
+// The .hide() method is used to hide an element, setting its CSS display property to 'none'.
 
+$('#myDiv').hide();  // Hide #myDiv
 
-2. .text()  // Get or set the text contents of an element
+3. .toggle()  // Toggle the visibility of an element
+// The .toggle() method is used to toggle between showing and hiding an element.
 
-// Example: Get text content:
-let textContent = $('#myDiv').text();  // Get the text content inside the div
-console.log(textContent);
+$('#myDiv').toggle();  // If #myDiv is visible, it will be hidden, and vice versa
 
-// Exmple: Set text content:
-$('#myDiv').text('This is new text content.');  // Set new text content inside the div
+4. .fadeIn()  // Fade an element in (show it with opacity)
+// # The .fadeIn() method is used to fade an element in by changing its opacity from 0 to 1.
 
+$('#myDiv').fadeIn(1000);  // Fade in #myDiv over 1 second
 
-3. .val()  // Get or set the value of form elements
+5. .fadeOut()  // Fade an element out (hide it with opacity)
+// # The .fadeOut() method is used to fade an element out by changing its opacity from 1 to 0.
 
-// Example: Get the value of an input field:
-let value = $('#myInput').val();  // Get the value of the input field
-console.log(value);
+$('#myDiv').fadeOut(1000);  // Fade out #myDiv over 1 second
 
-// Example: Set the value of an input field:
-$('#myInput').val('New Value');  // Set a new value to the input field
+6. .fadeToggle()  // Toggle between fade in and fade out
+// The .fadeToggle() method is used to toggle between fading in and fading out.
 
+$('#myDiv').fadeToggle(500);  // Toggle the visibility of #myDiv with fade effect
 
-4. .attr()  // Get or set the value of an attribute
+7. .slideDown()  // Slide an element down (make it visible)
+// The .slideDown() method is used to slide an element down and make it visible.
 
-// Example: Get the value of an attribute:
+$('#myDiv').slideDown(800);  // Slide down #myDiv over 0.8 seconds
 
- imgSrc = $('#myImage').attr('src');  // Get the 'src' attribute of the image
-console.log(imgSrc);
+8. .slideUp()  // Slide an element up (make it hidden)
+// The .slideUp() method is used to slide an element up and hide it.
 
-// Example: Set the value of an attribute:
-$('#myImage').attr('src', 'new-image.jpg');  // Set a new 'src' attribute for the image
+$('#myDiv').slideUp(800);  // Slide up #myDiv over 0.8 seconds
 
+9. .slideToggle()  // Toggle between slide up and slide down
+// The .slideToggle() method is used to toggle between sliding an element up and down.
 
-5. .css()  // Get or set CSS styles
+$('#myDiv').slideToggle(600);  // Toggle the visibility of #myDiv with slide effect
 
-// Example: Get a CSS property:
-let bgColor = $('#myDiv').css('background-color');  // Get the background color of the div
-console.log(bgColor);
+10. .animate()  // Perform custom animations on selected elements
+// The .animate() method is used to perform custom animations by changing CSS properties.
 
-// Example:  Set a CSS property:
-$('#myDiv').css('background-color', 'yellow');  // Set the background color of the div to yellow
+$('#myDiv').animate({ opacity: 0.5, left: '+=50px' }, 1000);  // Animate opacity and move #myDiv to the right
 
+11. .stop()  // Stop the current animation
+// The .stop() method is used to stop an ongoing animation on an element.
 
-
-6. .addClass()  // Add one or more classes to an element
-
-// Example: 
-$('#myDiv').addClass('newClass');  // Add the class 'newClass' to the div
+$('#myDiv').stop();  // Stop any running animations on #myDiv
 
 
-7. .removeClass() //  Remove one or more classes from an element
-// Example:
-$('#myDiv').removeClass('oldClass');  // Remove the class 'oldClass' from the div
+// 6. Utility Methods
+
+1. .each()  // Iterate over a jQuery object and execute a function for each element
+// The .each() method is used to iterate over a set of elements and execute a function on each element.
+
+$('#myList li').each(function(index) {
+    console.log('Item ' + index + ': ' + $(this).text());
+});
+
+2. .map()  // Translate each element in a set of matched elements
+// The .map() method is used to translate each element in a set of matched elements and return a new array.
+
+var items = $('#myList li').map(function() {
+    return $(this).text();
+}).get();  // Return an array of all list item texts
+
+3. .extend()  // Merge two or more objects
+// The .extend() method is used to merge two or more objects into one.
+
+var obj1 = { a: 1, b: 2 };
+var obj2 = { b: 3, c: 4 };
+$.extend(obj1, obj2);  // obj1 will be merged with obj2: {a: 1, b: 3, c: 4}
+
+4. .data()  // Store or retrieve data associated with an element
+// The .data() method is used to store or retrieve data associated with an element.
+
+$('#myDiv').data('info', 'This is some data');  // Store data in #myDiv
+
+var info = $('#myDiv').data('info');  // Retrieve the data from #myDiv
+
+5. .removeData()  // Remove data associated with an element
+// The .removeData() method is used to remove data associated with an element.
+
+$('#myDiv').removeData('info');  // Remove the data associated with #myDiv
+
+6. .queue()  // Get or set the queue of a DOM element
+// The .queue() method is used to retrieve or set the queue of functions for a DOM element.
+
+$('#myDiv').queue(function(next) {
+    console.log('This is a queued function.');
+    next();
+});
+
+7. .dequeue()  // Execute the next function in the queue
+// The .dequeue() method is used to execute the next function in the queue.
+
+$('#myDiv').dequeue();  // Move to the next function in the queue
+
+8. .hasClass()  // Check if an element has a certain class
+// The .hasClass() method checks if an element has the specified class.
+
+if ($('#myDiv').hasClass('active')) {
+    console.log('The element has the class "active".');
+}
+
+9. .is()  // Check if an element matches a selector
+// The .is() method checks if the selected element matches a given selector.
+
+if ($('#myDiv').is('.active')) {
+    console.log('The element has the class "active".');
+}
+
+10. .attr()  // Get or set an attribute of an element
+// The .attr() method is used to get or set the value of an attribute of an element.
+
+var src = $('#myImg').attr('src');  // Get the 'src' attribute of an image
+$('#myImg').attr('src', 'new-image.jpg');  // Set a new 'src' attribute for the image
+
+11. .toggle()  // Toggle between two states
+// The .toggle() method is used to toggle between two states, such as showing or hiding an element.
+
+$('#myDiv').toggle();  // Toggle visibility of #myDiv
+
+12. .delay()  // Create a delay in the animation queue
+// The .delay() method adds a delay before the next animation in the queue starts.
+
+$('#myDiv').fadeOut(500).delay(1000).fadeIn(500);  // Fade out, wait 1 second, then fade in
 
 
-8. .toggleClass()  // Add or remove one or more classes from an element
-// Example:
-$('#myDiv').toggleClass('active');  // Toggle the 'active' class on the div
+// 7. CSS Methods
 
-9. .append()  // Insert content at the end of the selected elements
-// Example:
-$('#myDiv').append('<p>New paragraph added at the end.</p>');  // Add a new paragraph at the end of the div
+1. .css()  // Get or set the CSS properties
+// The .css() method is used to get or set the CSS properties of an element.
 
+$('#myDiv').css('color', 'red');  // Set the text color of #myDiv to red
 
-10. .prepend() //  Insert content at the beginning of the selected elements
-// Example:
-$('#myDiv').prepend('<p>New paragraph added at the beginning.</p>');  // Add a new paragraph at the beginning of the div
+var color = $('#myDiv').css('color');  // Get the current color of #myDiv
 
+2. .width()  // Get or set the width of an element
+// The .width() method is used to get or set the width of an element.
 
-11. .before() // Insert content before the selected element
-// Example:
-$('#myDiv').before('<p>This paragraph is before the div.</p>');  // Insert a new paragraph before the div
+$('#myDiv').width(300);  // Set the width of #myDiv to 300px
 
+var width = $('#myDiv').width();  // Get the width of #myDiv
 
-12. .after() // Insert content after the selected element
-// Example:
-$('#myDiv').after('<p>This paragraph is after the div.</p>');  // Insert a new paragraph after the div
+3. .height()  // Get or set the height of an element
+// The .height() method is used to get or set the height of an element.
 
-13. .remove() // Remove an element from the DOM
-// Example:
-$('#myDiv').remove();  // Remove the div from the DOM
+$('#myDiv').height(200);  // Set the height of #myDiv to 200px
 
+var height = $('#myDiv').height();  // Get the height of #myDiv
 
-14. .empty() // Remove all child elements of the selected element
-// Example:
-$('#myDiv').empty();  // Remove all child elements of the div
+4. .innerWidth()  // Get the inner width (including padding) of an element
+// The .innerWidth() method returns the width of an element including padding, but excluding borders and margins.
 
+var innerWidth = $('#myDiv').innerWidth();  // Get the inner width of #myDiv
 
-15. .clone()  // Clone selected elements
-// Example:
-let clonedDiv = $('#myDiv').clone();  // Clone the div element
-$('#anotherDiv').append(clonedDiv);  // Append the cloned div to another div
+5. .innerHeight()  // Get the inner height (including padding) of an element
+// The .innerHeight() method returns the height of an element including padding.
 
+var innerHeight = $('#myDiv').innerHeight();  // Get the inner height of #myDiv
 
-16. .wrap() // Wrap each selected element inside a new element
-// Example:
-$('#myDiv').wrap('<div class="wrapper"></div>');  // Wrap the div inside a new div with the class 'wrapper'
+6. .outerWidth()  // Get the outer width (including margin) of an element
+// The .outerWidth() method returns the width of an element including margin.
 
-17. .unwrap()  // Remove the wrapping element from each selected element
-// Example:
-$('#myDiv').unwrap();  // Remove the wrapper div around the div
+var outerWidth = $('#myDiv').outerWidth();  // Get the outer width of #myDiv
 
+7. .outerHeight()  // Get the outer height (including margin) of an element
+// The .outerHeight() method returns the height of an element including margin.
 
-18. .replaceWith() // Replace each element with the specified content
-// Example:
-$('#myDiv').replaceWith('<p>This is a replacement element.</p>');  // Replace the div with a new paragraph
+var outerHeight = $('#myDiv').outerHeight();  // Get the outer height of #myDiv
 
+8. .position()  // Get the position of an element relative to its offset parent
+// The .position() method returns the position of an element relative to its offset parent (usually the nearest positioned ancestor).
 
-
-
-
+var position = $('#myDiv').position();  // Get the position of #myDiv relative to its parent
